@@ -10,7 +10,7 @@ interface PropType
 export default function SideBar(props: PropType)
 {
     return (
-        <aside>
+        <aside id='sidebar'>
             <nav>
                 <ul>
                     {props.children}

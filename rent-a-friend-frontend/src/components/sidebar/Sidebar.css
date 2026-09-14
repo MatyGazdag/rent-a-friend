@@ -1,0 +1,16 @@
+#sidebar
+{
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    min-width: 200px;
+    background-color: red;
+    z-index: 1000;
+}
+
+#sidebar nav ul
+{
+    list-style-type: none;
+}

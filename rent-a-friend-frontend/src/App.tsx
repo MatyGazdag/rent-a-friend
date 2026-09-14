@@ -8,6 +8,7 @@ import SibeBarItem from './components/sidebar/sidebar_item'
 import BookingPage from './pages/booking'
 import LoginPage from './pages/login'
 import RegistrationPage from './pages/registration'
+import ErrorPage from './pages/error'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/booking' element={<BookingPage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/register' element={<RegistrationPage/>}/>
+        <Route path='*' element={<ErrorPage/>}/>
       </Routes>
     </>
   )
