@@ -12,26 +12,32 @@ services:
       - postgres-db:/var/lib/postgresql/data
 
   backend:
-    build: ./rent-a-friend-backend
+    build:
+      context: . 
+      dockerfile: ./rent-a-friend-backend/Dockerfile
     container_name: rent_a_friend_backend
     ports:
       - "3000:3000"
     environment:
       - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres-db:5432/${POSTGRES_DB}
     volumes:
-      - ./rent-a-friend-backend:/app
-      - /app/node_modules
+      - ./rent-a-friend-backend:/app/rent-a-friend-backend
+      - ./shared:/app/shared
+      - /app/rent-a-friend-backend/node_modules
     depends_on:
       - postgres-db
 
   frontend:
-    build: ./rent-a-friend-frontend
+    build: 
+      context: .
+      dockerfile: ./rent-a-friend-frontend/Dockerfile
     container_name: rent_a_friend_frontend
     ports:
       - "5173:5173"
     volumes:
-      - ./rent-a-friend-frontend:/app
-      - /app/node_modules
+      - ./rent-a-friend-frontend:/app/rent-a-friend-frontend
+      - ./shared:/app/shared
+      - /app/rent-a-friend-frontend/node_modules
     depends_on:
       - backend
 

@@ -1,0 +1,21 @@
+{
+  "name": "rent-a-friend-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo for Rent-a-Friend application",
+  "homepage": "https://github.com/MatyGazdag/rent-a-friend#readme",
+  "bugs": {
+    "url": "https://github.com/MatyGazdag/rent-a-friend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatyGazdag/rent-a-friend.git"
+  },
+  "license": "MIT",
+  "author": "Matyas Gazdag",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "rent-a-friend-backend",
+    "rent-a-friend-frontend"
+  ]
+}

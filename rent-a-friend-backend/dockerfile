@@ -2,12 +2,13 @@ FROM node:26-alpine3.23
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY shared ./shared
+COPY rent-a-friend-backend ./rent-a-friend-backend
+
+WORKDIR /app/rent-a-friend-backend
 
 RUN npm install
 
-COPY . .
+EXPOSE 3000
 
-EXPOSE 5174
-
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["npm", "run", "dev"]
