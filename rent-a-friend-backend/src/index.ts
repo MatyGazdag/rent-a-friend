@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import userRouter from './route/user.route.js';
 
 dotenv.config();
 
@@ -8,14 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.get('/api/health', (req, res) => {
-  res.json(
-    { 
-      status: 'ok', 
-      message: 'API working' 
-    }
-  );
-});
+app.use("/api/user", userRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

@@ -1,36 +1,32 @@
 import { useState } from "react";
 import useTitle from "../../customehooks/useTitle";
+import { UserRegSchem } from "@rentafriend/shared";
 
 import './RegistrationPage.css'
 
 export default function RegistrationPage() {
     useTitle("Registration")
 
-    const [errorMes, errorMesSet] = useState<string[]>([]);
+    const [errorMes, setErrorMes] = useState<string[]>([]);
 
-    const handleSubmit = (e: React.SyntheticEvent) => {
+    const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const target = e.target as typeof e.target & {
-            email: { value: string };
-            password: { value: string };
-        };
-        const email = target.email.value;
-        const password = target.password.value;
+        const formData = Object.fromEntries(new FormData(e.currentTarget));
 
-        const errors: string[] = [];
+        //Validation requirement located in shared/schemas/user.ts
+        const result = UserRegSchem.safeParse(formData);
 
-        if(!email.includes('@'))
+        if(result.success)
         {
-            errors.push("Email must include @")
-        }
+            setErrorMes([]);
 
-        if(password.length < 6)
+            console.log("Sending data: ", result.data)
+        }else
         {
-            errors.push("Password is too short! Atleast 6 characters long")
+            const messages = result.error.issues.map((issue) => issue.message);
+            setErrorMes(messages);
         }
-
-        errorMesSet(errors)
     };
 
     return (
@@ -39,7 +35,7 @@ export default function RegistrationPage() {
                 <input name="username" type="text" placeholder="Scoootlaanndd" />
                 <input name="email" type="email" placeholder="example@gmail.com" />
                 <input name="password" type="password" />
-                <input name="passwordcheck" type="password" />
+                <input name="confirmPassword" type="password" />
 
                 <input type="submit" value="Register" />
             </form>

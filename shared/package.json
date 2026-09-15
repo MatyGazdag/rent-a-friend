@@ -1,0 +1,16 @@
+{
+  "name": "@rentafriend/shared",
+  "version": "0.1.0",
+  "description": "",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "author": "Matyas Gazdag",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "zod": "^4.6.5"
+  },
+  "compilerOptions": {
+    "strict": true
+  }
+}
