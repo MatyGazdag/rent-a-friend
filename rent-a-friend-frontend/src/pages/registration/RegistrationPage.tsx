@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useTitle from "../../customehooks/useTitle";
 import { UserRegSchem } from "@rentafriend/shared";
+import { API_ROUTES } from "@rentafriend/shared";
 
 import './RegistrationPage.css'
 
@@ -22,6 +23,10 @@ export default function RegistrationPage() {
             setErrorMes([]);
 
             console.log("Sending data: ", result.data)
+            const response = fetch(API_ROUTES.AUTH.REGISTER, {
+                method: 'POST',
+                
+            });
         }else
         {
             const messages = result.error.issues.map((issue) => issue.message);

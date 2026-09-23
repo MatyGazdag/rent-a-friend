@@ -6,7 +6,11 @@
   "types": "./index.ts",
   "author": "Matyas Gazdag",
   "license": "MIT",
-  "type": "commonjs",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
   "dependencies": {
     "zod": "^4.6.5"
   },

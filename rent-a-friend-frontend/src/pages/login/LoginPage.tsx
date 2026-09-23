@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useTitle from "../../customehooks/useTitle";
-import { UserLogSchem } from "@rentafriend/shared";
+import { API_ROUTES, UserLogSchem } from "@rentafriend/shared";
 import { useState } from "react";
 
 export default function LoginPage()
@@ -22,6 +22,10 @@ export default function LoginPage()
             setErrorMes([]);
 
             console.log("Sending data: ", result.data)
+            const res = fetch(API_ROUTES.AUTH.LOGIN, {
+                method: 'GET',
+
+            });
         }else
         {
             const messages = result.error.issues.map((issue) => issue.message);

@@ -7,7 +7,9 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "lint": "oxlint"
+    "lint": "oxlint",
+    "db:generate": "kanel -c ./kanel.config.ts",
+    "data-gen": "kysely-codegen --dialect postgres --out-file ./src/db/types.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,13 +17,20 @@
   "type": "module",
   "dependencies": {
     "@rentafriend/shared": "file:../shared",
+    "bcrypt": "^6.0.0",
+    "kysely": "^0.29.6",
+    "pg": "^8.23.0",
     "zod": "^4.6.5"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/node": "^26.5.1",
+    "@types/node": "^26.6.1",
+    "@types/pg": "^8.23.1",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "kanel": "^4.0.4",
+    "kanel-kysely": "^4.0.0",
+    "kysely-codegen": "^0.20.0",
     "oxlint": "^1.83.0",
     "tsx": "^4.23.13",
     "typescript": "^7.0.2"
