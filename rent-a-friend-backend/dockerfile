@@ -5,6 +5,8 @@ WORKDIR /app
 COPY shared ./shared
 COPY rent-a-friend-backend ./rent-a-friend-backend
 
+RUN cd /app/shared && npm install
+
 WORKDIR /app/rent-a-friend-backend
 
 RUN npm install

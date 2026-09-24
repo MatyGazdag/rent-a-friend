@@ -33,6 +33,7 @@ services:
     volumes:
       - ./rent-a-friend-backend:/app/rent-a-friend-backend
       - ./shared:/app/shared
+      - /app/shared/node_modules
       - /app/rent-a-friend-backend/node_modules
     depends_on:
       postgres-db:
@@ -48,6 +49,7 @@ services:
     volumes:
       - ./rent-a-friend-frontend:/app/rent-a-friend-frontend
       - ./shared:/app/shared
+      - /app/shared/node_modules
       - /app/rent-a-friend-frontend/node_modules
     depends_on:
       - backend
