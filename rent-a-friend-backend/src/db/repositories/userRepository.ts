@@ -8,6 +8,13 @@ export async function FindUserByUsernamme(username: string) {
         .executeTakeFirst();
 }
 
+export async function FindUserByUUID(uuid: string) {
+    return await db.selectFrom('users')
+        .where('id', '=', uuid)
+        .selectAll()
+        .executeTakeFirst();
+}
+
 export async function CreateUser(params : userBodyReqSchemInput) {
     await db.insertInto('users')
         .values({
