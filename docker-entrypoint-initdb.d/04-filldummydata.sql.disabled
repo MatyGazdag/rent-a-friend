@@ -1,0 +1,4 @@
+INSERT INTO public.booking(booking, "ownedBy")
+	VALUES (
+        
+    );
